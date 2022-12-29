@@ -1,8 +1,8 @@
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
-from apyllo.discord_bot import GameServerDiscordBot
-from apyllo.game_servers import CitraServer, Arma3Server
-from apyllo.embed_status_getters import citra_embed_status_getter, arma_embed_status_getter
-from apyllo.ping_threshold_checkers import get_basic_threshold_checker, get_citra_threshold_checker
+from .discord_bot import GameServerDiscordBot
+from .game_servers import CitraServer, Arma3Server
+from .embed_status_getters import citra_embed_status_getter, arma_embed_status_getter
+from .ping_threshold_checkers import get_basic_threshold_checker, get_citra_threshold_checker
 
 parser = ArgumentParser(description='Discord bot for displaying status of a game server', formatter_class=ArgumentDefaultsHelpFormatter)
 
