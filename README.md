@@ -5,7 +5,7 @@
 [![Issues](https://img.shields.io/github/issues-raw/Kexanone/apyllo.svg?label=Issues&style=flat-square)](https://github.com/Kexanone/apyllo/issues)
 [![License](https://img.shields.io/badge/License-GPLv3-orange.svg?style=flat-square)](https://github.com/Kexanone/apyllo/blob/master/LICENSE)
 
-A Discord bot for displaying status of a game server
+A Discord bot for displaying the status of a game server
 
 ## Supported Games
 - [x] Arma 3
