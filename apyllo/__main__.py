@@ -23,15 +23,18 @@ args = parser.parse_args()
 
 if args.game == 'citra':
     server = CitraServer(host=args.host, port=args.port)
+    bot_game_name = 'Citra Server ({server.player_count}/{server.max_player_count})'
     embed_status_getter = citra_embed_status_getter
     ping_threshold_checker = get_citra_threshold_checker(args.ping_threshold, args.ping_games)
 elif args.game == 'arma3':
     server = Arma3Server(host=args.host, port=args.port)
+    bot_game_name = 'Arma 3 Server ({server.player_count}/{server.max_player_count})'
     embed_status_getter = arma_embed_status_getter
     ping_threshold_checker = get_basic_threshold_checker(args.ping_threshold)
 
 bot = GameServerDiscordBot(
     server=server,
+    bot_game_name=bot_game_name,
     channel_id=args.channel_id,
     embed_status_getter=embed_status_getter,
     ping_role_id=args.ping_role_id,
