@@ -1,4 +1,10 @@
 # Apyllo
+[![Version](https://img.shields.io/github/release/Kexanone/apyllo.svg?label=Version&colorB=007EC6&style=flat-square)](https://github.com/Kexanone/apyllo/releases/latest)
+[![GitHub Downloads](https://img.shields.io/github/downloads/Kexanone/apyllo/total.svg?label=GitHub%20Dowloads&style=flat-square)](https://github.com/Kexanone/apyllo/releases)
+[![Docker Pulls](https://img.shields.io/docker/pulls/kexanone/apyllo.svg?label=Docker%20Pulls&style=flat-square)](https://github.com/Kexanone/apyllo/releases)
+[![Issues](https://img.shields.io/github/issues-raw/Kexanone/apyllo.svg?label=Issues&style=flat-square)](https://github.com/Kexanone/apyllo/issues)
+[![License](https://img.shields.io/badge/License-GPLv3-orange.svg?style=flat-square)](https://github.com/Kexanone/apyllo/blob/master/LICENSE)
+
 A Discord bot for displaying status of a game server
 
 ## Supported Games
