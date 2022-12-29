@@ -12,7 +12,7 @@ with open('apyllo/__version__.py', 'r') as stream:
 setup(
     name = 'apyllo',
     version = about['__version__'],
-    author = 'about['__author__'],
+    author = about['__author__'],
     license='GPLv3',
     description=('A Discord bot for displaying status of a game server.'),
     long_description=long_description,
@@ -26,5 +26,6 @@ setup(
         'Programming Language :: Python :: 3.8'
     ],
     packages=['apyllo'],
-    python_requires=">=3.8.*"
+    python_requires=">=3.8.*",
+    install_requires=['discord.py>=2.0.0', 'requests>=1.1.0']
 )
