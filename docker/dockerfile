@@ -1,0 +1,14 @@
+FROM ubuntu:latest
+
+RUN apt-get update && \
+    apt-get install -y python3 && \
+    apt-get install -y python3-pip && \
+    apt-get install -y docker.io && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* &&
+
+COPY ../../apyllo/ /apyllo/
+
+RUN python3 -m pip install apyllo
+
+ENTRYPOINT ["python3", "-m", "apyllo"]
