@@ -1,2 +1,2 @@
-# apyllo
-Discord bot for displaying status of a game server
+# Apyllo
+A Discord bot for displaying status of a game server
