@@ -18,6 +18,8 @@ python3 -m pip install ./apyllo
 ```
 
 ## Usage
+### Bot Account
+You first need to [create a bot account](https://discordpy.readthedocs.io/en/stable/discord.html#discord-intro) and invite it to your server. The secret bot token that is obtained has to be passed to `--token` (_see examples below_).
 ### Example for Arma 3
 ```sh
 # See `python3 -m apyllo arma3 --help` for more details
