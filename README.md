@@ -39,7 +39,7 @@ python3 -m apyllo citra \
 ```
 
 ## Docker
-Apyllo is also available as a docker image on [DockerHub](https://hub.docker.com/repository/docker/kexanone/apyllo)
+Apyllo is also available as a docker image on [Docker Hub](https://hub.docker.com/r/kexanone/apyllo)
 ```sh
 docker create --name mhxx-apyllo \
     --network host \
