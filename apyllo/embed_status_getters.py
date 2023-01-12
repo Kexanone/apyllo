@@ -2,6 +2,9 @@ from datetime import datetime, timedelta
 import discord
 
 
+MAX_EMBED_VALUE_SIZE = 1024
+
+
 def basic_embed_status_getter(server):
     if server.is_online:
         color = 0x43B581
@@ -18,10 +21,17 @@ def basic_embed_status_getter(server):
 def add_player_fields(embed, server, player_status_getter):
     player_counts = f'{server.player_count}/{server.max_player_count}'
     embed.add_field(name='Player count', value=player_counts, inline=False)
+    player_info_size = 44
     player_info_lines = ['```']
     if server.player_list:
         for player in server.player_list:
-            player_info_lines.append(f'• {player_status_getter(player)}')
+            line = f'• {player_status_getter(player)}'
+            player_info_size += 1 + len(line)
+            if player_info_size > MAX_EMBED_VALUE_SIZE:
+                # Truncate player list
+                player_info_lines.append('...')
+                break
+            player_info_lines.append(line)
     else:
         player_info_lines.append(' ')
     player_info_lines.append('```')
