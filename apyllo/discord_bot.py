@@ -8,6 +8,7 @@ from .ping_threshold_checkers import get_basic_threshold_checker
 
 
 STATUS_UPDATE_TIMEOUT = 60
+PING_HANDLER_TIMEOUT = 60
 CACHE_PATH = Path.home() / '.cache/apyllo/'
 CACHE_PATH.mkdir(parents=True, exist_ok=True)
 
@@ -46,20 +47,23 @@ class GameServerDiscordBot(Client):
         await self.wait_until_ready()
         print(f'{self.user} has connected to Discord!')
         self.channel = self.get_channel(self.channel_id)
-        self.ping_role = self.guilds[0].get_role(self.ping_role_id)
         message_id = self.load_message_id('status')
         try:
             self.status_message = await self.channel.fetch_message(message_id)
         except (discord.errors.NotFound, discord.errors.HTTPException):
             self.status_message = None
-        message_id = self.load_message_id('ping')
-        try:
-            self.ping_message = await self.channel.fetch_message(message_id)
-        except (discord.errors.NotFound, discord.errors.HTTPException):
-            self.ping_message = None
 
         self.update_status.start()
 
+        self.ping_role = self.guilds[0].get_role(self.ping_role_id)
+        if self.ping_role is not None:
+            message_id = self.load_message_id('ping')
+            try:
+                self.ping_message = await self.channel.fetch_message(message_id)
+            except (discord.errors.NotFound, discord.errors.HTTPException):
+                self.ping_message = None
+
+            self.ping_handler.start()
 
     def load_message_id(self, key):
         try:
@@ -106,7 +110,11 @@ class GameServerDiscordBot(Client):
         else:
             await self.status_message.edit(embed=embed)
         
-        # Ping designated members if the threshold has been reached
+    @tasks.loop(seconds=PING_HANDLER_TIMEOUT)
+    async def ping_handler(self):
+        '''
+        Ping designated members if the threshold has been reached
+        '''
         if self.ping_threshold_reached(self.server):
             if self.ping_message is None:
                 self.ping_message = await self.channel.send(
@@ -117,3 +125,4 @@ class GameServerDiscordBot(Client):
             if self.ping_message is not None:
                 await self.ping_message.delete()
                 self.ping_message = None
+
