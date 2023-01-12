@@ -104,9 +104,9 @@ class Arma3Server(SteamServer):
             # Parse basic info
             response = self.get_basic_info()
             matches = self.basic_info_pattern.search(response)
-            self.name = matches.group('name').decode('iso-8859-1')
-            self.world = matches.group('world').decode('iso-8859-1')
-            self.mission = matches.group('mission').decode('iso-8859-1')
+            self.name = matches.group('name').decode('utf8', 'replace')
+            self.world = matches.group('world').decode('utf8', 'replace')
+            self.mission = matches.group('mission').decode('utf8', 'replace')
             self.player_count = int.from_bytes(matches.group('player_count'),
                                                'big')
             self.max_player_count = int.from_bytes(matches.group(
@@ -117,7 +117,7 @@ class Arma3Server(SteamServer):
             response = self.get_player_info()
             for match in self.player_info_pattern.finditer(response):
                 player = {}
-                player['name'] = match.group('name').decode('iso-8859-1')
+                player['name'] = match.group('name').decode('utf8', 'replace')
                 player['score'] = int.from_bytes(match.group('score'), 'big')
                 player['time'] = int(struct.unpack('f', match.group('time'))[0])
                 self.player_list.append(player)
