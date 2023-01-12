@@ -86,7 +86,7 @@ class SteamServer(GameServer):
 
 
 class Arma3Server(SteamServer):
-    basic_info_pattern = re.compile(b'.*?\xbd(?P<name>.*?)\x00(?P<world>.*?)'
+    basic_info_pattern = re.compile(b'.*?\x11(?P<name>.*?)\x00(?P<world>.*?)'
                                     b'\x00.*?\x00(?P<mission>.*?)\x00{3}'
                                     b'(?P<player_count>.)'
                                     b'(?P<max_player_count>.)')
