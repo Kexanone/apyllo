@@ -13,8 +13,7 @@ A Discord bot for displaying the status of a game server
 
 ## Installation
 ```sh
-git clone https://github.com/Kexanone/apyllo.git
-python3 -m pip install ./apyllo
+python3 -m pip install git+https://github.com/Kexanone/apyllo.git
 ```
 
 ## Usage
