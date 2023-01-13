@@ -43,7 +43,7 @@ Apyllo is also available as a docker image on [Docker Hub](https://hub.docker.co
 ```sh
 docker create --name mhxx-apyllo \
     --network host \
-    -v ~/.cache/:~/.cache/ \
+    -v ~/.cache/:/root/.cache/ \
     kexanone/apyllo citra \
     --host <SERVER IP ADDRESS> --port <SERVER PORT> \
     --token <SECRET DISCORD BOT TOKEN> \
